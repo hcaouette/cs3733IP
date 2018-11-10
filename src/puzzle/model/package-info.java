@@ -5,4 +5,4 @@
  * @author Hunter
  *
  */
-package model;
+package puzzle.model;

@@ -15,5 +15,9 @@ public static void main(String[] args) {
     gameMod.addBlock(7,200, 200, 300, 200, 200, 300, 300, 300);
     gameMod.addBlock(8,100, 300, 200, 300, 100, 400, 200, 400);
     gameMod.addBlock(9,200, 300, 300, 300, 200, 400, 300, 400);
+    
+    for(int i=0; i<10; i++) {
+    	gameMod.checkBlock(i).printDim();
+    }
 }
 }

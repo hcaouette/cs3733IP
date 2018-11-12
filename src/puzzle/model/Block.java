@@ -26,6 +26,18 @@ public class Block {
 		bRight[1]=bRY;
 	}
 	
+	public boolean isKeyPiece(){
+		if((tRight[0] - tLeft[0])==200 && (bLeft[1]-tLeft[1])==200){
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public void printDim() {
+		System.out.println("piece is "+(tRight[0] - tLeft[0])+" by "+(bLeft[1]-tLeft[1]));
+	}
+	
 	
 	//top left
 	int[] getTLeft() {

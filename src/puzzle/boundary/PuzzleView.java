@@ -11,11 +11,11 @@ import puzzle.model.*;
  */
 public class PuzzleView extends JPanel {
 	Model m;
+	Image offScreenImage = null;
+	Graphics offScreenGraphics = null;
 	
 	
-	public PuzzleView(Model givenModel) {
-		m = givenModel;
-	}
+	public PuzzleView(Model givenModel){m = givenModel;}
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -34,11 +34,15 @@ public class PuzzleView extends JPanel {
 			tLY = temPiece.getTLeft()[1];
 			width = (temPiece.getTRight()[0] - tLX);
 			height = (temPiece.getBLeft()[1] - tLY);
-			g.fillRect(tLX,tLY,width,height);
+			System.out.println("painting an "+width+" by "+height+" rect from "+tLX+","+tLY);
+			//g.fillRect(tLX,tLY,width,height);
+			offScreenImage = this.createImage(width, height);
+			offScreenGraphics = offScreenImage.getGraphics();
+			g.drawImage(offScreenImage, tLX, tLY, this);
 			
-			Image piece2 = new Image();
 		}
 	}
+	
 	
 	public void refreshScreen() {
 		Piece temPiece;

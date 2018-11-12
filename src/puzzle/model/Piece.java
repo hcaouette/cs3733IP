@@ -1,16 +1,18 @@
 package puzzle.model;
 
-public class Block {
+public class Piece {
 	private int[] tLeft, bLeft, tRight, bRight;
+	boolean selected;
 	
-	Block(){
+	Piece(){
 		tLeft = new int[2];
 		tRight = new int[2];
 		bLeft = new int[2];
 		bRight = new int[2];
+		selected = false;
 	}
 	
-	Block(int tLX, int tLY, int tRX, int tRY, int bLX, int bLY, int bRX, int bRY){
+	Piece(int tLX, int tLY, int tRX, int tRY, int bLX, int bLY, int bRX, int bRY){
 		tLeft = new int[2];
 		tRight = new int[2];
 		bLeft = new int[2];
@@ -24,6 +26,8 @@ public class Block {
 		bLeft[1]=bLY;
 		bRight[0]=bLX;
 		bRight[1]=bRY;
+		
+		selected = false;
 	}
 	
 	public boolean isKeyPiece(){
@@ -32,6 +36,12 @@ public class Block {
 		}else {
 			return false;
 		}
+	}
+	protected void select(){
+		selected = true;
+	}
+	protected void deselect(){
+		selected = false;
 	}
 	
 	public void printDim() {

@@ -1,5 +1,7 @@
 package puzzle.boundary;
 
+import puzzle.model.*;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -15,12 +17,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 
 public class SlidingPuzzleApp extends JFrame {
-
+	PuzzleView view;
 	private JPanel contentPane;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/**public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -31,12 +33,13 @@ public class SlidingPuzzleApp extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public SlidingPuzzleApp() {
+	public SlidingPuzzleApp(Model model) {
+		view = new PuzzleView(model);
 		setTitle("SlidingPuzzleApp");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
@@ -60,7 +63,7 @@ public class SlidingPuzzleApp extends JFrame {
 		
 		JLabel lblMoves = new JLabel("Moves:");
 		
-		JLabel label = new JLabel("12");
+		JLabel label = new JLabel("0");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

@@ -21,11 +21,7 @@ public class PuzzleView extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		/**g.setColor(Color.red);
-		*g.fillRect(0, 0,  100, 200);
-		*g.setColor(Color.blue);
-		*g.fillRect(500, 500, 500, 500);
-		*/
+		
 		Piece temPiece;
 		int tLX,tLY,width,height;
 		for(int i=0;i<10;i++){
@@ -35,16 +31,19 @@ public class PuzzleView extends JPanel {
 			width = (temPiece.getTRight()[0] - tLX);
 			height = (temPiece.getBLeft()[1] - tLY);
 			System.out.println("painting an "+width+" by "+height+" rect from "+tLX+","+tLY);
-			//g.fillRect(tLX,tLY,width,height);
-			offScreenImage = this.createImage(width, height);
-			offScreenGraphics = offScreenImage.getGraphics();
-			g.drawImage(offScreenImage, tLX, tLY, this);
+	//		g.drawRect(tLX,tLY,width,height);
+	//		g.setColor(Color.BLUE);
+//			g.fillRect(tLX,tLY,width,height);
+			//offScreenImage = this.createImage(width, height);
+			//offScreenGraphics = offScreenImage.getGraphics();
+			//g.drawImage(offScreenImage, tLX, tLY, this);
 			
 		}
+		
 	}
 	
 	
-	public void refreshScreen() {
+	public void refreshScreen(){
 		Piece temPiece;
 		int tLX,tLY,width,height;
 		for(int i=0;i<10;i++){

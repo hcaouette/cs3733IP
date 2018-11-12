@@ -49,35 +49,35 @@ public class Piece {
 	}
 	
 	
-	//top left
-	int[] getTLeft() {
+	//returns top left "ordered pair"
+	public int[] getTLeft() {
 		return tLeft;
 	}
-	void setTLeft(int newX, int newY) {
+	public void setTLeft(int newX, int newY) {
 		tLeft[0] = newX;
 		tLeft[1] = newY;
 	}
-	//top right
-	int[] getTRight() {
+	//returns top right "ordered pair"
+	public int[] getTRight() {
 		return tRight;
 	}
-	void setTRight(int newX, int newY) {
+	public void setTRight(int newX, int newY) {
 		tRight[0] = newX;
 		tRight[1] = newY;
 	}
-	//bottom left
-	int[] getBLeft() {
+	//returns bottom left "ordered pair"
+	public int[] getBLeft() {
 		return bLeft;
 	}
-	void setBLeft(int newX, int newY) {
+	public void setBLeft(int newX, int newY) {
 		bLeft[0] = newX;
 		bLeft[1] = newY;
 	}
-	//bottom right
-	int[] getBRight() {
+	//returns bottom right "ordered pair"
+	public int[] getBRight() {
 		return bRight;
 	}
-	void setBRight(int newX, int newY) {
+	public void setBRight(int newX, int newY) {
 	bRight[0] = newX;
 	bRight[1] = newY;
 }

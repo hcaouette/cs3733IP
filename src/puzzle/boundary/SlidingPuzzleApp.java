@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 
 public class SlidingPuzzleApp extends JFrame {
 	PuzzleView view;
+	Model model;
 	private JPanel contentPane;
 	/**
 	 * Launch the application.
@@ -38,8 +39,9 @@ public class SlidingPuzzleApp extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SlidingPuzzleApp(Model model) {
-		view = new PuzzleView(model);
+	public SlidingPuzzleApp(Model m) {
+		this.model = m;
+		view = new PuzzleView(m);
 		setTitle("SlidingPuzzleApp");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
@@ -50,20 +52,16 @@ public class SlidingPuzzleApp extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GRAY);
 		panel.setSize(new Dimension(400, 500));
+		panel.add(view);
 		
 		JButton btnReset = new JButton("Reset");
-		
 		JButton button = new JButton("^");
-		
 		JButton button_1 = new JButton("<");
-		
 		JButton button_2 = new JButton(">");
-		
 		JButton btnV = new JButton("V");
-		
 		JLabel lblMoves = new JLabel("Moves:");
-		
 		JLabel label = new JLabel("0");
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -120,5 +118,9 @@ public class SlidingPuzzleApp extends JFrame {
 					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);
+	}
+	
+	public PuzzleView getView() {
+		return view;
 	}
 }

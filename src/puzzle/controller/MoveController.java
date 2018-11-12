@@ -5,14 +5,19 @@ import puzzle.model.Model;
 
 public class MoveController {
 	Model model;
-	SlidingPuzzleApp puzzle;
+	SlidingPuzzleApp app;
 	
 	MoveController(Model m, SlidingPuzzleApp p){
 		model = m;
-		puzzle = p;
+		app = p;
 	}
 	
 	public void movePiece(){
 		
+		
+		
+		
+		model.plusMoves();
+		app.getView().refreshScreen();
 	}
 }

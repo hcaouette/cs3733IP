@@ -1,16 +1,34 @@
 package puzzle.model;
 
+import puzzle.boundary.*;
+
 
 public class Model {
 	Piece[] positions;
 	int selectedPiece, numMoves;
+	SlidingPuzzleApp app;
 	
 	public Model(){
 		positions = new Piece[10];
 		int selectedPiece = 0;
 		numMoves = 0;
+		app=null;
 	}
 	
+	public Model(SlidingPuzzleApp puzzle){
+		positions = new Piece[10];
+		int selectedPiece = 0;
+		numMoves = 0;
+		app=puzzle;
+	}
+	
+	public void setPuzzle(SlidingPuzzleApp puzzle) {
+		app = puzzle;
+	}
+	
+	public SlidingPuzzleApp getPuzzle() {
+		return app;
+	}
 	
 	public void selectPiece(int i){
 		positions[i].select();

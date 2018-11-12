@@ -17,6 +17,8 @@ public class PuzzleView extends JPanel {
 		super.paintComponent(g);
 		
 		g.fillRect(0, 0,  400, 500);
+		g.setColor(java.awt.Color.red);
+		g.fillRect(0, 0, 100, 200);
 	}
 	
 }

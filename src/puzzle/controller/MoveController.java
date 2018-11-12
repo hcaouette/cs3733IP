@@ -1,5 +1,18 @@
 package puzzle.controller;
 
-public class MoveController {
+import puzzle.boundary.SlidingPuzzleApp;
+import puzzle.model.Model;
 
+public class MoveController {
+	Model model;
+	SlidingPuzzleApp puzzle;
+	
+	MoveController(Model m, SlidingPuzzleApp p){
+		model = m;
+		puzzle = p;
+	}
+	
+	public void movePiece(){
+		
+	}
 }

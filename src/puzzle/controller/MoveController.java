@@ -1,18 +1,28 @@
 package puzzle.controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import puzzle.boundary.SlidingPuzzleApp;
 import puzzle.model.Model;
 import puzzle.model.Piece;
 
-public class MoveController {
+public class MoveController implements ActionListener{
 	Model model;
 	SlidingPuzzleApp app;
+	int dir;
 	
-	MoveController(Model m, SlidingPuzzleApp p){
+	public MoveController(Model m, SlidingPuzzleApp p, int dir){
 		model = m;
 		app = p;
+		this.dir=dir;
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	//dir determined at time of function call
@@ -86,11 +96,14 @@ public class MoveController {
 	//returns false if there would be a collision
 	private boolean comparePieces(Piece p, Piece p2, int edge, int edge2) {
 		
-		if((p.getTLeft()[0]>p2.getBRight()[0]) && (p.getTLeft()[1]<p2.getBRight()[1])){
+		if((p.getTLeft()[0]<p2.getBRight()[0]) && (p.getTLeft()[1]<p2.getBRight()[1])){
 			//top left/bottom right intersect
+			//
 			return false;
-		}else if((p.getTLeft()[0]<p2.getBRight()[0]) && (p.getTLeft()[1] < p2.getBRight()[1])){
+		}else if((p.getTLeft()[0]>p2.getBRight()[0]) && (p.getTLeft()[1]<p2.getBRight()[1])){
 			//bottom left/top right intersect
+			//p is more x, less y
+			return false;
 		}else if((p.getTLeft()[0]<p2.getBRight()[0]) && (p.getTLeft()[1] < p2.getBRight()[1])){
 			//bottom right/top left intersect
 		}else if((p.getTLeft()[0]<p2.getBRight()[0]) && (p.getTLeft()[1] < p2.getBRight()[1])){
@@ -99,4 +112,5 @@ public class MoveController {
 		
 		return true;
 	}
+
 }

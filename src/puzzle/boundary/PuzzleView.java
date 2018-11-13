@@ -11,19 +11,23 @@ import puzzle.model.*;
  */
 public class PuzzleView extends JPanel {
 	Model m;
-	Image offScreenImage = null;
-	Graphics offScreenGraphics = null;
+	SlidingPuzzleApp puzzle;
 	
-	
-	public PuzzleView(Model givenModel){m = givenModel;}
+	public PuzzleView(Model givenModel){
+		m=givenModel;
+		this.puzzle = m.getPuzzle();
+	}
 
 	@Override
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g){
+		this.setSize(new Dimension(400, 500));
+		this.setAlignmentX(LEFT_ALIGNMENT);
+		this.setAlignmentY(TOP_ALIGNMENT);
+		//System.out.println("height is "+getHeight()+", width is "+getWidth());
 		super.paintComponent(g);
-		
-		
 		Piece temPiece;
 		int tLX,tLY,width,height;
+		g.setColor(Color.GREEN);
 		for(int i=0;i<10;i++){
 			temPiece = m.checkPiece(i);
 			tLX = temPiece.getTLeft()[0];
@@ -31,13 +35,9 @@ public class PuzzleView extends JPanel {
 			width = (temPiece.getTRight()[0] - tLX);
 			height = (temPiece.getBLeft()[1] - tLY);
 			System.out.println("painting an "+width+" by "+height+" rect from "+tLX+","+tLY);
-	//		g.drawRect(tLX,tLY,width,height);
-	//		g.setColor(Color.BLUE);
-//			g.fillRect(tLX,tLY,width,height);
-			//offScreenImage = this.createImage(width, height);
-			//offScreenGraphics = offScreenImage.getGraphics();
-			//g.drawImage(offScreenImage, tLX, tLY, this);
+			//g.drawRect(tLX,tLY,width,height);
 			
+			g.fillRect(tLX,tLY,width,height);
 		}
 		
 	}

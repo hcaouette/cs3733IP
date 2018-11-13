@@ -1,6 +1,7 @@
 package puzzle.boundary;
 
 import puzzle.model.*;
+import puzzle.controller.*;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,6 +9,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import eight.controller.PuzzleController;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Dimension;
@@ -40,8 +46,8 @@ public class SlidingPuzzleApp extends JFrame {
 	 * Create the frame.
 	 */
 	public SlidingPuzzleApp(Model m) {
+		setResizable(false);//static size
 		this.model = m;
-		view = new PuzzleView(m);
 		setTitle("SlidingPuzzleApp");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
@@ -49,10 +55,17 @@ public class SlidingPuzzleApp extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
+		view = new PuzzleView(m);		
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GRAY);
 		panel.setSize(new Dimension(400, 500));
+//		System.out.println("height is "+panel.getHeight()+", width is "+panel.getWidth());
+//		System.out.println("height is "+view.getHeight()+", width is "+view.getWidth());
 		panel.add(view);
+		
+		
+		
 		
 		JButton btnReset = new JButton("Reset");
 		JButton button = new JButton("^");
@@ -61,7 +74,19 @@ public class SlidingPuzzleApp extends JFrame {
 		JButton btnV = new JButton("V");
 		JLabel lblMoves = new JLabel("Moves:");
 		JLabel label = new JLabel("0");
-		
+		btnReset.addActionListener(new ResetController(m,this));
+		view.add(btnReset);
+		button.addActionListener(new MoveController(m,this,0));
+		view.add(button);
+		button_1.addActionListener(new MoveController(m,this,3));
+		view.add(button_1);
+		button_2.addActionListener(new MoveController(m,this,1));
+		view.add(button_2);
+		btnV.addActionListener(new MoveController(m,this,2));
+		view.add(btnV);
+		SelectController selectController = new SelectController(m,this);
+		view.addMouseMotionListener(selectController);
+			
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

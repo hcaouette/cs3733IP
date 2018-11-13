@@ -27,17 +27,24 @@ public class PuzzleView extends JPanel {
 		super.paintComponent(g);
 		Piece temPiece;
 		int tLX,tLY,width,height;
-		g.setColor(Color.GREEN);
+		g.setColor(Color.PINK);
+		
 		for(int i=0;i<10;i++){
 			temPiece = m.checkPiece(i);
 			tLX = temPiece.getTLeft()[0];
 			tLY = temPiece.getTLeft()[1];
 			width = (temPiece.getTRight()[0] - tLX);
 			height = (temPiece.getBLeft()[1] - tLY);
-			System.out.println("painting an "+width+" by "+height+" rect from "+tLX+","+tLY);
+			//System.out.println("painting an "+width+" by "+height+" rect from "+tLX+","+tLY);
+			if(temPiece.isKeyPiece()) {
+				g.setColor(Color.RED);
+			}
+			if(temPiece.isSelected()) {
+				g.setColor(Color.BLUE);
+			}
 			//g.drawRect(tLX,tLY,width,height);
-			
 			g.fillRect(tLX,tLY,width,height);
+			g.setColor(Color.PINK);
 		}
 		
 	}

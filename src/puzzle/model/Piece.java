@@ -29,6 +29,7 @@ public class Piece {
 		
 		selected = false;
 	}
+	public boolean isSelected() {return selected;}
 	
 	public boolean isKeyPiece(){
 		if((tRight[0] - tLeft[0])==200 && (bLeft[1]-tLeft[1])==200){

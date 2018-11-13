@@ -10,14 +10,14 @@ public class Model {
 	
 	public Model(){
 		positions = new Piece[10];
-		int selectedPiece = 0;
+		int selectedPiece = 32;
 		numMoves = 0;
 		app=null;
 	}
 	
 	public Model(SlidingPuzzleApp puzzle){
 		positions = new Piece[10];
-		int selectedPiece = 0;
+		int selectedPiece = 32;
 		numMoves = 0;
 		app=puzzle;
 	}
@@ -31,9 +31,14 @@ public class Model {
 	}
 	
 	public void selectPiece(int i){
+		//updates piece values
 		positions[i].select();
 		positions[selectedPiece].deselect();
+		//updates model record
 		selectedPiece = i;
+	}
+	public int getSelectedPiece() {
+		return selectedPiece;
 	}
 	
 	public int getMoves() {

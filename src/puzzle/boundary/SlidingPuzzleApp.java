@@ -3,44 +3,29 @@ package puzzle.boundary;
 import puzzle.model.*;
 import puzzle.controller.*;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import eight.controller.PuzzleController;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import java.awt.Dimension;
-import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Dimension;
+import java.awt.Color;
+
 
 public class SlidingPuzzleApp extends JFrame {
 	PuzzleView view;
 	Model model;
 	private JPanel contentPane;
-	/**
-	 * Launch the application.
-	 */
-	/**public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SlidingPuzzleApp frame = new SlidingPuzzleApp();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
 
 	/**
 	 * Create the frame.
@@ -64,9 +49,7 @@ public class SlidingPuzzleApp extends JFrame {
 //		System.out.println("height is "+view.getHeight()+", width is "+view.getWidth());
 		panel.add(view);
 		
-		
-		
-		
+			
 		JButton btnReset = new JButton("Reset");
 		JButton button = new JButton("^");
 		JButton button_1 = new JButton("<");
@@ -74,6 +57,7 @@ public class SlidingPuzzleApp extends JFrame {
 		JButton btnV = new JButton("V");
 		JLabel lblMoves = new JLabel("Moves:");
 		JLabel label = new JLabel("0");
+		this.add(label);
 		btnReset.addActionListener(new ResetController(m,this));
 		view.add(btnReset);
 		button.addActionListener(new MoveController(m,this,0));
@@ -84,8 +68,20 @@ public class SlidingPuzzleApp extends JFrame {
 		view.add(button_2);
 		btnV.addActionListener(new MoveController(m,this,2));
 		view.add(btnV);
-		SelectController selectController = new SelectController(m,this);
-		view.addMouseMotionListener(selectController);
+		
+		view.addMouseMotionListener(new MouseAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				new SelectController(m,SlidingPuzzleApp.this).react(e.getPoint());
+			}
+		});
+		
+		view.addMouseListener(new MouseAdapter(){
+			@Override
+			public void mouseClicked(MouseEvent e){
+				new SelectController(m,SlidingPuzzleApp.this).select(e.getPoint());
+			}
+		});
 			
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -144,6 +140,8 @@ public class SlidingPuzzleApp extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
+	
+
 	
 	public PuzzleView getView() {
 		return view;

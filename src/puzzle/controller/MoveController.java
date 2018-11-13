@@ -2,7 +2,6 @@ package puzzle.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import puzzle.boundary.PuzzleView;
@@ -26,7 +25,7 @@ public class MoveController implements ActionListener{
 		int selNum =model.getSelectedPiece();
 		Piece piece = model.checkPiece(selNum);
 		PuzzleView view = app.getView();
-		System.out.println(dir+" button pressed!");
+		//System.out.println(dir+" button pressed!");
 		switch(dir) {
 		case 0:
 			//System.out.println("initiate movecheck up. ("+dir+")");
@@ -103,16 +102,17 @@ public class MoveController implements ActionListener{
 			Piece p2 = model.checkPiece(i);
 			switch(dir) {
 			case 0:
-				if(((p.getTLeft()[1]==p2.getBLeft()[1]) && (p.getTRight()[1]==p2.getBRight()[1]))&&
+				if(((p.getTLeft()[1]==p2.getBLeft()[1]) || (p.getTRight()[1]==p2.getBRight()[1]))&&
 						((p.getTLeft()[0]==p2.getBLeft()[0]) && (p.getTRight()[0]==p2.getBRight()[0]))){
 					System.out.println("Piece "+selNum+" shares a border with "+i+" at y="+p.getTLeft()[1]);
 					System.out.println(p.getTLeft()[1]+","+p2.getBLeft()[1]+","+p.getTRight()[1]+","+p2.getBRight()[1]);
+					System.out.println(p.getTLeft()[0]+","+p2.getBLeft()[0]+","+p.getTRight()[0]+","+p2.getBRight()[0]);
 					//active piece contacting on top
 					System.out.println("collisionFree up failed.");
 					collisionFree= false;
 				}break;
 			case 1:
-				if(((p.getTRight()[0]==p2.getTLeft()[0]) && (p.getBRight()[0]==p2.getBLeft()[0]))&&
+				if(((p.getTRight()[0]==p2.getTLeft()[0]) || (p.getBRight()[0]==p2.getBLeft()[0]))&&
 						((p.getTRight()[1]==p2.getTLeft()[1]) && (p.getBRight()[1]==p2.getBLeft()[1]))){
 					System.out.println("Piece "+selNum+" shares a border with "+i+" at x="+p.getTRight()[0]);
 					//active piece contacting on right
@@ -120,7 +120,7 @@ public class MoveController implements ActionListener{
 					collisionFree= false;
 				}break;
 			case 2:
-				if(((p.getBLeft()[1]==p2.getTLeft()[1]) && (p.getBRight()[1]==p2.getTRight()[1]))&&
+				if(((p.getBLeft()[1]==p2.getTLeft()[1]) || (p.getBRight()[1]==p2.getTRight()[1]))&&
 						((p.getBLeft()[0]==p2.getTLeft()[0]) && (p.getBRight()[0]==p2.getTRight()[0]))){
 					System.out.println("Piece "+selNum+" shares a border with "+i+" at y="+p.getBLeft()[1]);
 					System.out.println(p.getBLeft()[1]+","+p2.getTLeft()[1]+","+p.getBRight()[1]+","+p2.getTRight()[1]);
@@ -130,7 +130,7 @@ public class MoveController implements ActionListener{
 					collisionFree= false;
 				}break;
 			case 3:
-				if(((p.getTLeft()[0]==p2.getTRight()[0]) && (p.getBLeft()[0]==p2.getBRight()[0]))&&
+				if(((p.getTLeft()[0]==p2.getTRight()[0]) || (p.getBLeft()[0]==p2.getBRight()[0]))&&
 						((p.getTLeft()[1]==p2.getTRight()[1]) && (p.getBLeft()[1]==p2.getBRight()[1]))){
 					System.out.println("Piece "+selNum+" shares a border with "+i+" at x="+p.getTLeft()[0]);
 					//active piece contacting on left

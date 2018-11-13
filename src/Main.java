@@ -1,5 +1,3 @@
-import java.awt.Canvas;
-import java.awt.EventQueue;
 import java.awt.event.*;
 
 import puzzle.boundary.*;
@@ -28,7 +26,7 @@ public static void main(String[] args) {
     gameMod.addPiece(7,200, 200, 300, 200, 200, 300, 300, 300);
     gameMod.addPiece(8,100, 300, 200, 300, 100, 400, 200, 400);
     gameMod.addPiece(9,200, 300, 300, 300, 200, 400, 300, 400);
-    
+
     // Disposing the window will complete the application
 	app.addWindowListener(new WindowAdapter() {
 		public void windowClosing(WindowEvent e) {

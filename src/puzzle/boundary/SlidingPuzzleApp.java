@@ -12,16 +12,13 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Dimension;
 import java.awt.Color;
 
 
+@SuppressWarnings("serial")
 public class SlidingPuzzleApp extends JFrame {
 	PuzzleView view;
 	Model model;
@@ -69,12 +66,12 @@ public class SlidingPuzzleApp extends JFrame {
 		btnV.addActionListener(new MoveController(m,this,2));
 		view.add(btnV);
 		
-		view.addMouseMotionListener(new MouseAdapter() {
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				new SelectController(m,SlidingPuzzleApp.this).react(e.getPoint());
-			}
-		});
+//		view.addMouseMotionListener(new MouseAdapter() {
+//			@Override
+//			public void mouseMoved(MouseEvent e) {
+//				new SelectController(m,SlidingPuzzleApp.this).react(e.getPoint());
+//			}
+//		});
 		
 		view.addMouseListener(new MouseAdapter(){
 			@Override

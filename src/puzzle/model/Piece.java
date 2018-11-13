@@ -24,7 +24,7 @@ public class Piece {
 		tRight[1]=tRY;
 		bLeft[0]=bLX;
 		bLeft[1]=bLY;
-		bRight[0]=bLX;
+		bRight[0]=bRX;
 		bRight[1]=bRY;
 		
 		selected = false;
@@ -41,7 +41,7 @@ public class Piece {
 	protected void select(){
 		selected = true;
 	}
-	protected void deselect(){
+	public void deselect(){
 		selected = false;
 	}
 	
@@ -81,6 +81,13 @@ public class Piece {
 	public void setBRight(int newX, int newY) {
 	bRight[0] = newX;
 	bRight[1] = newY;
-}
+	}
+	
+	public void printAllPoints() {
+		System.out.println("top left: "+tLeft[0]+","+tLeft[1]);
+		System.out.println("top right: "+tRight[0]+","+tRight[1]);
+		System.out.println("bot left: "+bLeft[0]+","+bLeft[1]);
+		System.out.println("bot right: "+bRight[0]+","+bRight[1]);
+	}
 
 }

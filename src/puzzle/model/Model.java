@@ -10,14 +10,12 @@ public class Model {
 	
 	public Model(){
 		positions = new Piece[10];
-		int selectedPiece = 32;
 		numMoves = 0;
 		app=null;
 	}
 	
 	public Model(SlidingPuzzleApp puzzle){
 		positions = new Piece[10];
-		int selectedPiece = 32;
 		numMoves = 0;
 		app=puzzle;
 	}
@@ -46,6 +44,7 @@ public class Model {
 	}
 	public void plusMoves() {
 		numMoves++;
+		System.out.println(numMoves);
 	}
 	public void resetMoves() {
 		numMoves = 0;
@@ -58,6 +57,14 @@ public class Model {
 	//add existing block to the model's array (set method v2)
 	public void addPiece(int pos, Piece blockB){
 		positions[pos] = blockB;
+	}
+	
+	public void changePiece(int pos, int tLX, int tLY, int tRX, int tRY, int bLX, int bLY, int bRX, int bRY) {
+		Piece p = positions[pos];
+		p.setTLeft(tLX, tLY);
+		p.setTRight(tRX, tRY);
+		p.setBLeft(bLX, bLY);
+		p.setBRight(bRX, bRY);
 	}
 	
 	public Piece checkPiece(int i) {

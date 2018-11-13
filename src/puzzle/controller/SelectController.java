@@ -4,12 +4,8 @@ import puzzle.boundary.*;
 import puzzle.model.*;
 
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
-import javax.swing.JButton;
 
 
 public class SelectController extends MouseAdapter{
@@ -21,10 +17,10 @@ public class SelectController extends MouseAdapter{
 		this.model = m;
 	}
 	
-	public void react(Point pt) {
-		PuzzleView view = app.getView();
-		//view.repaint();
-	}
+//	public void react(Point pt) {
+//		PuzzleView view = app.getView();
+//		view.repaint();
+//	}
 	
 	public void select(Point pt){
 		PuzzleView view = app.getView();
@@ -36,6 +32,7 @@ public class SelectController extends MouseAdapter{
 				System.out.println("selected block number "+i);
 			}
 		}
+		model.checkPiece(model.getSelectedPiece()).printAllPoints();
 		view.repaint();
 	}
 
